@@ -1,10 +1,9 @@
 <div class='container'>
   <div>
-  <form name='signup' action="/signin" method='POST'>
+  <form name='signup' action="/signup" method='POST'>
     <label>Sign up</label>
     <input type='text' name='user[username]' placeholder='username' required>
     <input type='text' name='user[password]' placeholder='password' required>
-
     <input type='submit' name='submit'>
   </form>
   </div>
@@ -12,8 +11,8 @@
   <form name='login' action="/signin" method='POST'>
 
     <label>Sign in</label>
-    <input type='text' name='user[username]' placeholder='username' required>
-    <input type='text' name='user[password]' placeholder='password' required>
+    <input type='text' name='username' placeholder='username' required>
+    <input type='text' name='password' placeholder='password' required>
 
     <input type='submit' name='submit'>
   </form>

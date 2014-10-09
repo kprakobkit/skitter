@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   include BCrypt
   validates :username, uniqueness: true, presence: true
