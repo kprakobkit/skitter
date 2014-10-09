@@ -1,0 +1,10 @@
+<div class='skeet-list' >
+  <h1>Your Skeets</h1>
+  <%= @user_skeets.each do |skeet| %>
+    <div>
+      <%= @user.username %>
+      <%= @user.created_at %>
+      <%= skeet.skeet %>
+    </div>
+  <% end %>
+</div>

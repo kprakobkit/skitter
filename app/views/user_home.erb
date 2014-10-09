@@ -1,0 +1,12 @@
+<div class='container' >
+  <h1>Skitter </h1>
+  <%= @user.username %>
+  <form name='Skeet' action="/user/<%= @user.id %>/new>" method='POST'>
+    <label>Create Skeet</label>
+    <textarea name='@user.tweet[body]' placeholder='type your skeet here...' required></textarea>
+    <input type='submit' name='submit'>
+  </form>
+  <div>
+    <% erb :user_skeets %>
+  </div>
+</div>
