@@ -1,0 +1,8 @@
+<div class='follower-list' >
+  <h1>Your followers</h1>
+  <% current_user.followers.each do |follower| %>
+    <div>
+      <%= follower.username %>
+    </div>
+  <% end %>
+</div>
