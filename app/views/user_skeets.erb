@@ -1,9 +1,9 @@
 <div class='skeet-list' >
   <h1>Your Skeets</h1>
-  <% @user_skeets.each do |skeet| %>
+  <% current_user.skeets.each do |skeet| %>
     <div>
-      <%= @user.username %>
-      <%= @user.created_at %>
+      <%= current_user.username %>
+      <%= current_user.created_at %>
       <%= skeet.skeet %>
     </div>
   <% end %>

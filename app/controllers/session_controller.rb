@@ -3,7 +3,7 @@ post '/signup' do
   # erb :user_home
   user = User.new(params[:user])
   if user.save
-    # session[:id] = user.id
+    session[:user_id] = user.id
     redirect "/user/#{user.id}"
   end
 end
@@ -11,9 +11,15 @@ end
 post '/signin' do
   user = User.find_by(username: params[:username])
   if user.password == params[:password]
-    # session[:id] = user.id
+    session[:user_id] = user.id
     redirect "/user/#{user.id}"
   else
     redirect '/'
   end
+end
+
+post '/logout' do
+  session[:user_id] = nil
+
+  redirect '/'
 end
