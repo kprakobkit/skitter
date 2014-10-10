@@ -14,3 +14,12 @@ post '/user/:id/new' do
 
   erb :user_home
 end
+
+# Tested erb with temp routes
+# get '/show_followers' do
+#   erb :followers
+# end
+
+# get '/show_followees' do
+#   erb :followees
+# end
