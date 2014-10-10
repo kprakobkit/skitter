@@ -1,18 +1,12 @@
-<div class='skeet-list' >
-  <h1><%= @user.username %>'s Skeets</h1>
-  <% @user.skeets.each do |skeet| %>
-    <div>
-      <%= current_user.username %>
-      <%= current_user.created_at %>
-      <%= skeet.skeet %>
-    </div>
-    <form name='delete-skeet' action="/user/<%= current_user.id %>/edit/<%= skeet.id %>" method='post'>
-
-        <button class="btn btn-info" type='submit' name='delete'>Delete</button>
-    </form>
-  <% end %>
-</div>
-
-
-
-
+<% @user.skeets.each do |skeet| %>
+  <div>
+    <p><span class="lead"><strong><%= @user.username %></strong></span> <%= @user.created_at.strftime("on %b %e") %></p>
+    <p class="lead"><%= skeet.skeet %></p>
+    <%if @user.id == current_user.id %>
+      <form name='delete-skeet' action="/user/<%= current_user.id %>/edit/<%= skeet.id %>" method='post'>
+          <button class="btn btn-info" type='submit' name='delete'>Delete</button>
+      </form>
+    <% end %>
+    <hr>
+  </div>
+<% end %>

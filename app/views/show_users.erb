@@ -1,8 +1,7 @@
 <div class='user-list' >
-  <h1>All Skeeters</h1>
   <% @users.each do |user| %>
     <div>
-      <%= user.username %>
+      <a href="/user/<%= user.id %>/profile/user_skeets"><%= user.username %></a>
     </div>
   <% end %>
 </div>

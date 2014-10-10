@@ -7,21 +7,23 @@
   <h2 class="text-center"><%= @user.username %></h2>
 
    <!-- need to style this -->
-  <a class="text-center" href="/user/<%= current_user.id %>/profile/show_users">See all skeeters</a>
+  <a class="text-center" href="/user/<%= @user.id %>/profile/show_users">See all skeeters</a>
 
-  <% if current_user.id == @user.id %>
+  <% if logged_in? %>
+    <% if current_user.id == @user.id %>
 
-  <div class="row">
-    <br>
-    <div class="col-md-6 col-md-offset-3">
-      <form role="form" name='Skeet' action="/user/<%= current_user.id %>/new" method='POST'>
-        <div class="form-group">
-          <textarea class="form-control" name='skeet' placeholder='skeet here...' required></textarea>
-        </div>
-        <p class="text-right"><input class="btn btn-success" type='submit' name='submit' value='Skeet'></p>
-      </form>
+    <div class="row">
+      <br>
+      <div class="col-md-6 col-md-offset-3">
+        <form role="form" name='Skeet' action="/user/<%= current_user.id %>/new" method='POST'>
+          <div class="form-group">
+            <textarea class="form-control" name='skeet' placeholder='skeet here...' required></textarea>
+          </div>
+          <p class="text-right"><input class="btn btn-success" type='submit' name='submit' value='Skeet'></p>
+        </form>
+      </div>
     </div>
-  </div>
+    <% end %>
   <% end %>
 
   <div class="row">
