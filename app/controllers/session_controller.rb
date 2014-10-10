@@ -4,6 +4,8 @@ post '/signup' do
   user = User.new(params[:user])
   if user.save
     session[:user_id] = user.id
+    user.first_skeet
+    user.followers << user
     redirect "/user/#{user.id}"
   end
 end
