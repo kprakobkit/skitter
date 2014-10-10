@@ -17,9 +17,9 @@ get '/user/:id' do
   erb :user_home
 end
 
+# profile page
 get '/user/:id/profile/:partial' do
-  "*" * 50
-  p params[:partial]
+  @users = User.all
   @partial = params[:partial]
   @user = User.find params[:id]
 
@@ -58,3 +58,12 @@ end
 # get '/show_followees' do
 #   erb :followees
 # end
+
+# get '/user/:id/profile/show_users' do
+#   @users = User.all
+#   @partial = params[:partial]
+#   erb :show_users
+# end
+# TODO :
+# test temp route for partial
+# or test real route from profile page
