@@ -4,7 +4,8 @@
 
 <div>
   <a href="/user/<%= current_user.id %>/profile/followees">followees</a><br>
-  <a href="/user/<%= current_user.id %>/profile/followers">followers</a>
+  <a href="/user/<%= current_user.id %>/profile/followers">followers</a><br>
+  <a href="/user/<%= current_user.id %>/profile/show_users">all skeeters</a>
   <p>bio</p>
   <p>location</p>
 </div>
@@ -16,5 +17,9 @@
     <%= erb :followers %>
   <% elsif @partial == "user_skeets" %>
     <%= erb :user_skeets %>
+  <% elsif @partial == "show_users" %>
+    <%= erb :show_users %>
   <% end %>
 </div>
+
+
