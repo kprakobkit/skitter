@@ -1,5 +1,4 @@
 <div class='followee-list' >
-  <h1><%= @user.username %>'s followees</h1>
   <% @user.followees.each do |followee| %>
     <% unless followee.id == @user.id %>
       <div>
