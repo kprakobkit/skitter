@@ -1,8 +1,12 @@
 <div class='followee-list' >
-  <h1>Your followees</h1>
-  <% current_user.followees.each do |followee| %>
-    <div>
-      <%= followee.username %>
-    </div>
+  <h1><%= @user.username %>'s followees</h1>
+  <% @user.followees.each do |followee| %>
+    <% unless followee.id == @user.id %>
+      <div>
+        <a href="/user/<%= followee.id %>/profile/user_skeets">
+          <%= followee.username %>
+        </a>
+      </div>
+    <% end %>
   <% end %>
 </div>

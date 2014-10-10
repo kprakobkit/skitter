@@ -17,12 +17,37 @@ get '/user/:id' do
   erb :user_home
 end
 
+# profile page
 get '/user/:id/profile/:partial' do
-  "*" * 50
-  p params[:partial]
+  @users = User.all
   @partial = params[:partial]
+  @user = User.find params[:id]
 
   erb :profile
+end
+
+post '/follow/:id' do
+  @action = "follow"
+  if logged_in?
+    @user = User.find params[:id]
+    unless current_user.followees.exists?(id: @user.id)
+      current_user.followees << @user
+    end
+    erb :success
+  else
+    erb :not_logged_in
+  end
+end
+
+post '/unfollow/:id' do
+  @action = "unfollow"
+  if logged_in?
+    @user = User.find params[:id]
+    current_user.followees.delete @user
+    erb :success
+  else
+    erb :not_logged_in
+  end
 end
 
 # Tested erb with temp routes
@@ -33,3 +58,12 @@ end
 # get '/show_followees' do
 #   erb :followees
 # end
+
+# get '/user/:id/profile/show_users' do
+#   @users = User.all
+#   @partial = params[:partial]
+#   erb :show_users
+# end
+# TODO :
+# test temp route for partial
+# or test real route from profile page
