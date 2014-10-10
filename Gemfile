@@ -17,7 +17,8 @@ gem 'shotgun'
 
 gem 'bcrypt'
 
-
+gem 'gravatar-ultimate'
+gem 'gravatarify', '~> 3.0.0'
 
 group :test do
   gem 'shoulda-matchers'
