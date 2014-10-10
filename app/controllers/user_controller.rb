@@ -8,6 +8,14 @@ post '/user/:id/new' do
   erb :user_home
 end
 
+# delete a tweet
+post '/user/:id/edit/:skeet_id' do
+  @skeet = Skeet.find(params[:skeet_id])
+  @skeet.delete
+  @skeet.save
+  redirect "/user/#{params[:id]}/profile/user_skeets"
+end
+
 # displaying all the info for user view
 get '/user/:id' do
   @user = User.find(params[:id])
@@ -57,11 +65,4 @@ end
 #   erb :followees
 # end
 
-# get '/user/:id/profile/show_users' do
-#   @users = User.all
-#   @partial = params[:partial]
-#   erb :show_users
-# end
-# TODO :
-# test temp route for partial
-# or test real route from profile page
+
