@@ -7,12 +7,6 @@
     <input type='submit' name='submit'>
   </form>
   <div>
-    <% @all_skeets.each do |skeet| %>
-      <div>
-        <%= skeet.user.username %>
-        <%= skeet.created_at %>
-        <%= skeet.skeet %>
-      </div>
-    <% end %>
+    <%= erb :user_skeets %>
   </div>
 </div>
