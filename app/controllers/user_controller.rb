@@ -8,6 +8,17 @@ post '/user/:id/new' do
   erb :user_home
 end
 
+post '/user/:id/reskeet/:author_id/:skeet' do
+  # create a skeet for the user
+  current_user.skeets.create(
+    skeet: params[:skeet],
+    reskeet: true,
+    author_id: params[:author_id]
+  )
+
+  redirect "/user/#{params[:id]}"
+end
+
 # delete a tweet
 post '/user/:id/edit/:skeet_id' do
   @skeet = Skeet.find(params[:skeet_id])
@@ -28,6 +39,7 @@ get '/user/:id/profile/:partial' do
   @users = User.all
   @partial = params[:partial]
   @user = User.find params[:id]
+  @all_skeets = @user.get_all_skeets
 
   erb :profile
 end
@@ -55,14 +67,3 @@ post '/unfollow/:id' do
     erb :not_logged_in
   end
 end
-
-# Tested erb with temp routes
-# get '/show_followers' do
-#   erb :followers
-# end
-
-# get '/show_followees' do
-#   erb :followees
-# end
-
-

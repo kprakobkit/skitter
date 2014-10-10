@@ -21,6 +21,13 @@ class User < ActiveRecord::Base
     all_skeets.sort_by { |skeet| skeet.created_at }.reverse!
   end
 
+  def get_own_skeets
+    own_skeets = self.skeets.map do |skeet|
+      skeet
+    end.flatten
+    own_skeets.sort_by { |skeet| skeet.created_at }.reverse!
+  end
+
   def password
     @password ||= Password.new(password_hash)
   end
