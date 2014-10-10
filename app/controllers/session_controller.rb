@@ -1,4 +1,8 @@
 # new user signn up
+get '/signup' do
+  erb :user_login
+end
+
 post '/signup' do
   # erb :user_home
   user = User.new(params[:user])
@@ -6,8 +10,14 @@ post '/signup' do
     session[:user_id] = user.id
     user.first_skeet
     user.followers << user
-    redirect "/user/#{user.id}"
+    redirect "/signup"
   end
+end
+
+post '/signup/new' do
+  user = current_user
+  user.update_attributes(params[:user])
+  redirect "/user/#{user.id}"
 end
 
 post '/signin' do
