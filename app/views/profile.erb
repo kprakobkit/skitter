@@ -1,11 +1,35 @@
 <div>
-  <h1>Profile page</h1>
+  <h1>
+    <% if current_user.id == @user.id %>
+        <%= @user.username %>
+    <% elsif current_user.followees.exists?(id: @user.id) %>
+      <form action="/unfollow/<%= @user.id %>" method="post">
+        <%= @user.username %>
+        <button class="btn btn-primary" type="submit">
+          Unfollow <%= @user.username %>
+        </button>
+      </form>
+    <% else %>
+      <form action="/follow/<%= @user.id %>" method="post">
+        <%= @user.username %>
+        <button class="btn btn-primary" type="submit">
+          Follow <%= @user.username %>
+        </button>
+      </form>
+    <% end %>
+  </h1>
 </div>
 
 <div>
-  <a href="/user/<%= current_user.id %>/profile/followees">followees</a><br>
-  <a href="/user/<%= current_user.id %>/profile/followers">followers</a><br>
-  <a href="/user/<%= current_user.id %>/profile/show_users">all skeeters</a>
+  <a href="/user/<%= @user.id %>/profile/user_skeets">
+    <%= @user.username %>'s skeets
+  </a><br>
+  <a href="/user/<%= @user.id %>/profile/followees">
+    <%= @user.username %>'s followees
+  </a><br>
+  <a href="/user/<%= @user.id %>/profile/followers">
+    <%= @user.username %>'s followers
+  </a>
   <p>bio</p>
   <p>location</p>
 </div>

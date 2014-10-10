@@ -1,0 +1,9 @@
+<% if @action == "follow" %>
+  You are now following <%= @user.username %>!
+<% elsif @action == "unfollow" %>
+  You are no longer following <%= @user.username %>!
+<% end %>
+<br> <br>
+<form action="/user/<%= current_user.id %>/profile/user_skeets" method="get">
+  <button class="btn btn-primary type="submit">OK</button>
+</form>
