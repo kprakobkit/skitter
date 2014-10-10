@@ -51,7 +51,7 @@ post '/follow/:id' do
     unless current_user.followees.exists?(id: @user.id)
       current_user.followees << @user
     end
-    erb :success
+    redirect "/user/#{@user.id}/profile/user_skeets"
   else
     erb :not_logged_in
   end
@@ -62,7 +62,7 @@ post '/unfollow/:id' do
   if logged_in?
     @user = User.find params[:id]
     current_user.followees.delete @user
-    erb :success
+    redirect "/user/#{@user.id}/profile/user_skeets"
   else
     erb :not_logged_in
   end
