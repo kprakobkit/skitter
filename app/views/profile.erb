@@ -25,7 +25,7 @@
   </p>
 </div>
 
-<div>
+<!-- <div>
   <a href="/user/<%= @user.id %>/profile/user_skeets">
     <%= @user.username %>'s skeets
   </a><br>
@@ -37,8 +37,30 @@
   </a>
   <p>bio</p>
   <p>location</p>
-</div>
+</div> -->
 
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active"><a href="#skeets" role="tab" data-toggle="tab">Skeets</a></li>
+      <li><a href="#followees" role="tab" data-toggle="tab">Following</a></li>
+      <li><a href="#followers" role="tab" data-toggle="tab">Followers</a></li>
+      <li><a href="#show_users" role="tab" data-toggle="tab">All Users</a></li>
+    </ul>
+
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="skeets"><br><%= erb :user_skeets %></div>
+      <div class="tab-pane" id="followees"><br><%= erb :followees %></div>
+      <div class="tab-pane" id="followers"><br><%= erb :followers %></div>
+      <div class="tab-pane" id="show_users"><br><%= erb :show_users %></div>
+    </div>
+      </div>
+    </div>
+<!--
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <% if @partial == "followees" %>
@@ -51,6 +73,6 @@
         <%= erb :show_users %>
       <% end %>
     </div>
-  </div>
+  </div> -->
 
 
