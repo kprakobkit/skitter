@@ -32,7 +32,15 @@
       <% @all_skeets.each do |skeet| %>
         <div>
           <p><span class="lead"><strong><%= skeet.user.username %></strong></span> <%= skeet.created_at.strftime("on %b %e") %></p>
+          <% if skeet.reskeet %>
+            <p><small>
+              reskeeted from <a href="/user/<%= skeet.author.id %>/profile/user_skeets"><%= skeet.author.username %></a>
+            </small></p>
+          <% end %>
           <p class="lead"><%= skeet.skeet %></p>
+          <form name='reskeet' action="/user/<%= current_user.id %>/reskeet/<%= skeet.author_id %>/<%= skeet.skeet %>" method='post'>
+            <button class="btn btn-info btn-xs" type='submit' name='delete'>Reskeet</button>
+          </form>
           <hr>
         </div>
       <% end %>
