@@ -21,8 +21,33 @@ get '/user/:id/profile/:partial' do
   "*" * 50
   p params[:partial]
   @partial = params[:partial]
+  @user = User.find params[:id]
 
   erb :profile
+end
+
+post '/follow/:id' do
+  @action = "follow"
+  if logged_in?
+    @user = User.find params[:id]
+    unless current_user.followees.exists?(id: @user.id)
+      current_user.followees << @user
+    end
+    erb :success
+  else
+    erb :not_logged_in
+  end
+end
+
+post '/unfollow/:id' do
+  @action = "unfollow"
+  if logged_in?
+    @user = User.find params[:id]
+    current_user.followees.delete @user
+    erb :success
+  else
+    erb :not_logged_in
+  end
 end
 
 # Tested erb with temp routes
