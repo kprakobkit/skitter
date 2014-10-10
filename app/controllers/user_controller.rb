@@ -15,6 +15,14 @@ post '/user/:id/new' do
   erb :user_home
 end
 
+get '/user/:id/profile/:partial' do
+  "*" * 50
+  p params[:partial]
+  @partial = params[:partial]
+
+  erb :profile
+end
+
 # Tested erb with temp routes
 # get '/show_followers' do
 #   erb :followers
