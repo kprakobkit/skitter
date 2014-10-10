@@ -1,0 +1,20 @@
+<div>
+  <h1>Profile page</h1>
+</div>
+
+<div>
+  <a href="/user/<%= current_user.id %>/profile/followees">followees</a><br>
+  <a href="/user/<%= current_user.id %>/profile/followers">followers</a>
+  <p>bio</p>
+  <p>location</p>
+</div>
+
+<div>
+  <% if @partial == "followees" %>
+    <%= erb :followees %>
+  <% elsif @partial == "followers" %>
+    <%= erb :followers %>
+  <% elsif @partial == "user_skeets" %>
+    <%= erb :user_skeets %>
+  <% end %>
+</div>

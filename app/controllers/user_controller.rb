@@ -16,3 +16,20 @@ get '/user/:id' do
   @all_skeets = @user.get_all_skeets
   erb :user_home
 end
+
+get '/user/:id/profile/:partial' do
+  "*" * 50
+  p params[:partial]
+  @partial = params[:partial]
+
+  erb :profile
+end
+
+# Tested erb with temp routes
+# get '/show_followers' do
+#   erb :followers
+# end
+
+# get '/show_followees' do
+#   erb :followees
+# end
