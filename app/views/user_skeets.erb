@@ -1,10 +1,8 @@
-<div class='skeet-list' >
-  <h1><%= @user.username %>'s Skeets</h1>
-  <% @user.skeets.each do |skeet| %>
-    <div>
-      <%= current_user.username %>
-      <%= current_user.created_at %>
-      <%= skeet.skeet %>
-    </div>
-  <% end %>
-</div>
+<h1><%= @user.username %>'s Skeets</h1>
+<% @user.skeets.each do |skeet| %>
+  <div>
+    <p><span class="lead"><strong><%= @user.username %></strong></span> <%= @user.created_at.strftime("on %b %e") %></p>
+    <p class="lead"><%= skeet.skeet %></p>
+    <hr>
+  </div>
+<% end %>
