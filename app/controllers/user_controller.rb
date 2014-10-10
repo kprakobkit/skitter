@@ -10,10 +10,7 @@ end
 
 # displaying all the info for user view
 get '/user/:id' do
-  # bio
-  # all their tweets
   @user = User.find(params[:id])
-  # @user_followees = @user.followees
   @all_skeets = @user.get_all_skeets
   erb :user_home
 end
