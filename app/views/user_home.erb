@@ -1,21 +1,38 @@
 <div class='container' >
-  <h1>Skitter </h1>
-  <%= @user.username %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p class="text-center"><img src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200" alt="..." class="img-circle"></p>
+    </div>
+  </div>
+  <h2 class="text-center"><%= @user.username %></h2>
+
+   <!-- need to style this -->
+  <a class="text-center" href="/user/<%= current_user.id %>/profile/show_users">See all skeeters</a>
+
   <% if current_user.id == @user.id %>
-  <form name='Skeet' action="/user/<%= current_user.id %>/new" method='POST'>
-    <label>Create Skeet</label>
-    <textarea name='skeet' placeholder='type your skeet here...' required></textarea>
-    <input type='submit' name='submit'>
-  </form>
+
+  <div class="row">
+    <br>
+    <div class="col-md-6 col-md-offset-3">
+      <form role="form" name='Skeet' action="/user/<%= current_user.id %>/new" method='POST'>
+        <div class="form-group">
+          <textarea class="form-control" name='skeet' placeholder='skeet here...' required></textarea>
+        </div>
+        <p class="text-right"><input class="btn btn-success" type='submit' name='submit' value='Skeet'></p>
+      </form>
+    </div>
+  </div>
   <% end %>
-  <div>
-    <% @all_skeets.each do |skeet| %>
-      <div>
-        <%= skeet.user.username %>
-        <%= skeet.created_at %>
-        <%= skeet.skeet %>
-      </div>
-    <% end %>
-  </div><br>
-  <a href="/user/<%= current_user.id %>/profile/show_users">See all skeeters</a>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <hr>
+      <% @all_skeets.each do |skeet| %>
+        <div>
+          <p><span class="lead"><strong><%= skeet.user.username %></strong></span> <%= skeet.created_at.strftime("on %b %e") %></p>
+          <p class="lead"><%= skeet.skeet %></p>
+          <hr>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
