@@ -6,5 +6,13 @@
       <%= current_user.created_at %>
       <%= skeet.skeet %>
     </div>
+    <form name='delete-skeet' action="/user/<%= current_user.id %>/edit/<%= skeet.id %>" method='post'>
+
+        <button class="btn btn-info" type='submit' name='delete'>Delete</button>
+    </form>
   <% end %>
 </div>
+
+
+
+
