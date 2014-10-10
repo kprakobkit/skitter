@@ -23,16 +23,9 @@
 <body>
   <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container">
-      <div class="navbar-header">
-         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-           <span class="sr-only">Toggle navigation</span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button>
-       </div>
+
        <% if current_user %>
-       <p style="color: white">Signed in as <%= current_user.username %></p>
+       <p class="navbar-text navbar-right" style="color: white">Hi, <a href="/user/<%= current_user.id %>"><%= current_user.username %></a>!</p>
 
        <form class="navbar-form navbar-right" action='/logout' method='POST'>
           <div class="form-group">
@@ -40,6 +33,7 @@
           </div>
         </form>
        <% end %>
+
     </div>
   </nav>
 
