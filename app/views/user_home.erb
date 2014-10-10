@@ -6,7 +6,13 @@
   </div>
   <a href="/user/<%= @user.id %>/profile/user_skeets"><h2 class="text-center"><%= @user.username %></h2></a>
    <!-- need to style this -->
-  <h2 class="text-center"><small><%= @user.bio %></small></h2>
+  <h2 class="text-center">
+    <small>
+      <%= @user.bio %><br><br>
+      <%= @user.city %>, <%= @user.state %><br>
+      <%= @user.email %>
+    </small>
+  </h2>
 
   <% if logged_in? %>
     <% if current_user.id == @user.id %>
