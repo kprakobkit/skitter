@@ -36,7 +36,7 @@
       <hr>
       <% @all_skeets.each do |skeet| %>
         <div>
-          <p><span class="lead"><strong><%= skeet.user.username %></strong></span> <%= skeet.created_at.strftime("on %b %e") %></p>
+          <p><span class="lead"><strong><a href="/user/<%= skeet.user.id %>/profile/user_skeets"><%= skeet.user.username %></a></strong></span> <%= skeet.created_at.strftime("on %b %e") %></p>
           <% if skeet.reskeet %>
             <p><small>
               reskeeted from <a href="/user/<%= skeet.author.id %>/profile/user_skeets"><%= skeet.author.username %></a>
