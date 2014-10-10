@@ -7,4 +7,12 @@ class Skeet < ActiveRecord::Base
   }
 
   belongs_to :user
+  belongs_to :author, :class_name => "User"
+  after_initialize :set_author
+
+  private
+  
+  def set_author
+    self.author_id = self.user_id unless self.reskeet
+  end
 end
