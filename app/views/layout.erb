@@ -21,19 +21,27 @@
   <title></title>
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <% if current_user %>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <%= current_user.username + "!"%> <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/user/<%= current_user.id %>">Feed</a></li>
+                <li><a href="/user/<%= current_user.id %>/profile/user_skeets">Profile</a></li>
+              </ul>
+            </li>
+          </ul>
 
-       <% if current_user %>
-       <p class="navbar-text navbar-right" style="color: white">Hi, <a href="/user/<%= current_user.id %>"><%= current_user.username %></a>!</p>
-
-       <form class="navbar-form navbar-right" action='/logout' method='POST'>
-          <div class="form-group">
-            <input class="btn btn-primary" type='submit' name='Sign Up' value='Logout'>
-          </div>
-        </form>
-       <% end %>
-
+          <form class="navbar-form navbar-right" action='/logout' method='POST'>
+             <div class="form-group">
+               <input class="btn btn-primary" type='submit' name='Sign Up' value='Logout'>
+             </div>
+           </form>
+          <% end %>
+        </div>
     </div>
   </nav>
 
